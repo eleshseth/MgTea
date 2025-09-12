@@ -1,0 +1,96 @@
+.healthy {
+  gap: 20px;
+  animation: fadeIn 0.8s ease-in;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: #41c21a;
+  margin-top: 50px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: #41c21a;
+  margin-top: 50px;
+  text-align: center;
+}
+.subheading {
+font-family: 'Ubuntu', sans-serif;
+  text-align: center;
+  margin-top: 10x;
+
+  color: black;
+  font-size: 18px;
+}
+.healthy-water-list-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 20px;
+  flex-wrap: wrap;
+}
+.healthy-water-list {
+  font-family:  'Ubuntu', sans-serif;;
+  flex: 0 0 calc(33.33% - 16px);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.16);
+  padding: 10px 12px;
+  margin-bottom: 25px;
+  background-color: #fff;
+  margin-right: 14px;
+}
+.water-list-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.water-title {
+  font-family:  'Ubuntu', sans-serif;
+  font-size: 14px;
+  flex: 1;
+  color: #41c21a;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.5;
+}
+.water-list-body {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.5;
+}
+.healthy-water-text {
+  text-align: center;
+  font-size: 14px;
+
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .healthy-water-list {
+    flex: 0 0 calc(50% - 16px);
+  }
+}
+
+@media (max-width: 480px) {
+  .healthy-water-list-container {
+    padding: 0 10px;
+    justify-content: space-between;
+  }
+
+  .healthy-water-list {
+    flex: 0 0 calc(33.33% - 10px);
+    margin-right: 0;
+    padding: 8px;
+    margin-bottom: 15px;
+  }
+
+  .water-title {
+    font-size: 12px;
+  }
+
+  .water-list-body {
+    font-size: 12px;
+  }
+
+  .water-list-body .bold {
+    font-size: 12px;
+  }
+}

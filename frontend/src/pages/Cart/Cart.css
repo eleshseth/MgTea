@@ -1,0 +1,146 @@
+.cart {
+  margin-top: 100px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: auto;
+}
+.cart-item-title {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr 0.5fr;
+  align-items: center;
+  color: grey;
+  font-size: max(1vw, 12px);
+}
+.cart-items-item {
+  margin: 10px 0px;
+  color: black;
+  align-items: center;
+  min-height: 50px;
+}
+
+.cart-items-item img {
+  width: 50px;
+}
+.cart hr {
+  height: 1px;
+  background-color: #e2e2e2;
+}
+.cart-items-item .cross {
+  cursor: pointer;
+  color: #41c21a;
+}
+
+.cart-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 80px;
+  gap: max(12vw, 20px);
+}
+.cart-total {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cart-total-details {
+  display: flex;
+  justify-content: space-between;
+  color: #555;
+}
+.cart-total hr {
+  margin: 10px 0px;
+}
+.cart-total button {
+  padding: 12px 0px;
+  background-color: #41c21a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  width: max(15vw, 200px);
+}
+.cart-total button:hover {
+  background-color: #217a06;
+}
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px;
+  background-color: rgba(65, 199, 24, 0.679);
+  border-radius: 30px;
+  width: fit-content;
+}
+
+.quantity-btn {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  object-fit: contain;
+}
+
+.quantity-controls p {
+  margin: 0;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  min-width: 20px;
+}
+
+.cart-items-item {
+  margin: 10px 0px;
+  color: black;
+  align-items: center;
+  min-height: 50px;
+}
+
+.quantity-btn:hover {
+  transform: scale(1.1);
+}
+
+.price-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.price-display .original-price {
+  font-size: 12px;
+  color: #666;
+  text-decoration: line-through;
+  font-weight: normal;
+}
+
+.price-display .discounted-price {
+  font-size: 16px;
+  color: #ff0000;
+  font-weight: bold;
+}
+
+/* Update the grid template for better spacing */
+.cart-item-title {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr 1.5fr 1fr 0.5fr;
+  align-items: center;
+  color: grey;
+  font-size: max(1vw, 12px);
+}
+@media (max-width: 750px) {
+  .cart-bottom {
+    flex-direction: column-reverse;
+  }
+  .cart-total {
+    width: 100%;
+  }
+  .cart-total button {
+    width: 100%;
+  }
+}
