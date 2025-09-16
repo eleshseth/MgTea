@@ -105,6 +105,17 @@
   z-index: 1;
 }
 
+.navbar-wishlist-icon {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  margin-right: 6px;
+}
+.navbar-wishlist-icon:hover {
+  transform: scale(1.15);
+}
+
 @media (max-width: 1050px) {
   .navbar .logo {
     width: 140px;

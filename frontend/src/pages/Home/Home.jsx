@@ -52,6 +52,21 @@ const Home = () => {
           margin: '32px 0',
         }}
       />
+      <div className='advantage'>
+        <div className='advantage-img-col'>
+          <img src={assets.ben} alt='Advantage' className='advantage-img' />
+        </div>
+        <div className='advantage-text-col'>
+          <h2>Key Advantages</h2>
+          <ul>
+            <li>Boosts overall wellness naturally</li>
+            <li>Enhances energy and focus</li>
+            <li>Supports healthy digestion</li>
+            <li>Strengthens immune defense</li>
+            <li>Refreshing and delicious taste</li>
+          </ul>
+        </div>
+      </div>
       {/* <img src={assets.copy} width='100%' height='100%' /> */}
     </div>
   );

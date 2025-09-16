@@ -8,6 +8,7 @@ import CartRouter from './routes/cartRoute.js';
 import orderRouter from './routes/orderRoute.js';
 import adminRouter from './routes/adminRoute.js';
 import contactRouter from './routes/contactRoute.js';
+import wishlistRoutes from './routes/wishlistRoutes.js';
 
 //app config
 const app = express();
@@ -31,6 +32,7 @@ app.use('/api/cart', CartRouter);
 app.use('/api/order', orderRouter);
 app.use('/api/admin', adminRouter);
 app.use('/api/contact', contactRouter);
+app.use('/api/wishlist', wishlistRoutes);
 app.get('/', (req, res) => {
   res.send('API working ');
 });

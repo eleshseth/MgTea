@@ -39,7 +39,7 @@ import food_29 from './food_29.png';
 import food_30 from './food_30.png';
 import food_31 from './food_31.png';
 import food_32 from './food_32.png';
-
+import ben from './ben.png';
 import add_icon_white from './add_icon_white.png';
 import add_icon_green from './add_icon_green.png';
 import remove_icon_red from './remove_icon_red.png';
@@ -74,19 +74,18 @@ import blog1 from './blog1.jpg'; // Fixed import name
 import menu from './menu.png';
 import blog3 from './blog3.jpg';
 import kurkure from './kurkure.webp';
-import packing from './packing.jpg';
-import transport from './transportation.jpg';
-import Recycled from "./Recycle.jpg" 
-import Bottlebenefit from "./Bottlebenefit.jpg"
-import alkanity from "./alkanity.jpg"
-import brain  from "./brain.png";
-import bones from "./bones.png";
-import heart from "./heart.png";
-import digestion from "./digestion.png";
-import cholesterol from "./cholesterol.png";
-import hydration from "./hydration.png";
-import immunity from "./immunity.png";
-import age from "./age.png";
+
+import Recycled from './Recycle.jpg';
+import Bottlebenefit from './Bottlebenefit.jpg';
+import alkanity from './alkanity.jpg';
+import brain from './brain.png';
+import bones from './bones.png';
+import heart from './heart.png';
+import digestion from './digestion.png';
+import cholesterol from './cholesterol.png';
+import hydration from './hydration.png';
+import immunity from './immunity.png';
+import age from './age.png';
 import layer from './layer.jpg';
 import origin from './origin.jpg';
 import origin2 from './origin2.jpg';
@@ -95,14 +94,19 @@ import logofinal from './logofinal.png';
 import impact from './impact.png';
 import impactmobile from './impactmobile.png';
 import originmobile from './originmobile.jpg';
-import copy from "./copy.jpg"
+import copy from './copy.jpg';
 import front from './front.jpg';
 import back from './back.jpg';
-import banner from "./banner.png"
-import bannervideo from "./bannervideo.mp4"
-import benifits from "./benifits.png"
+import banner from './banner.png';
+import bannervideo from './bannervideo.mp4';
+import benifits from './benifits.png';
+import dryfruits from './dryfruits.png';
+import greentea from './greentea.png';
+import resin from './resin.png';
+import grocery from './grocery.png';
+import teabags from './teabag.png';
+import heart_icon from './heart_icon.png';
 export const assets = {
-
   basket_icon,
   header_img,
   search_icon,
@@ -164,42 +168,37 @@ export const assets = {
   banner,
   bannervideo,
   drop,
-  benifits
+  benifits,
+  dryfruits,
+  greentea,
+  resin,
+  grocery,
+  teabags,
+  ben,
+  heart_icon,
 };
 
 export const menu_list = [
   {
     menu_name: 'Momo',
-    menu_image: menu_1,
+    menu_image: greentea,
   },
   {
     menu_name: 'Rolls',
-    menu_image: menu_2,
+    menu_image: teabags,
   },
   {
     menu_name: 'Fries',
-    menu_image: header_img_1,
+    menu_image: resin,
   },
   {
-    menu_name: 'Kurkure',
-    menu_image: kurkure,
+    menu_name: 'Dryfruits',
+    menu_image: dryfruits,
   },
 
   {
     menu_name: 'Manchurian',
-    menu_image: menu_8,
-  },
-  {
-    menu_name: 'Transportation',
-    menu_image:transport,
-  },
-  {
-    menu_name: 'Packing & Forwarding',
-    menu_image: packing,
-  },
-  {
-    menu_name: 'popcorn',
-    menu_image: popcorn,
+    menu_image: grocery,
   },
 ];
 

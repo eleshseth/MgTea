@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { data, Link, useNavigate } from 'react-router-dom';
+import {  Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 import { assets } from '../../assets/assets';
 import { StoreContext } from '../../context/StoreContext';
@@ -9,7 +9,7 @@ import Search from '../Search/Search';
 const Navbar = ({ setShowLogin, showLogin }) => {
   const [menu, setMenu] = useState('home');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { getTotalCartAmount, token, setToken, userData, setUserData } =
+  const { getTotalCartAmount, token, setToken,  setUserData } =
     useContext(StoreContext);
   const navigate = useNavigate();
   const [showSearch, setShowSearch] = useState(false);
@@ -32,20 +32,22 @@ const Navbar = ({ setShowLogin, showLogin }) => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const handleMenuClick = () => {
-    setMenu('menu');
-    setIsMobileMenuOpen(false);
-    const foodDisplay = document.getElementById('food-display');
-    if (foodDisplay) {
-      foodDisplay.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  // const handleMenuClick = () => {
+  //   setMenu('menu');
+  //   setIsMobileMenuOpen(false);
+  //   const foodDisplay = document.getElementById('food-display');
+  //   if (foodDisplay) {
+  //     foodDisplay.scrollIntoView({ behavior: 'smooth' });
+  //   }
+  // };
 
   return (
     <div className='navbar'>
-    
-        <img src={assets.logofinal} alt="Alkaline Water Logo"  className='navbar-logo' />
-    
+      <img
+        src={assets.logofinal}
+        alt='Alkaline Water Logo'
+        className='navbar-logo'
+      />
 
       <div className='hamburger-menu' onClick={toggleMobileMenu}>
         <span></span>
@@ -88,7 +90,7 @@ const Navbar = ({ setShowLogin, showLogin }) => {
             setIsMobileMenuOpen(false);
           }}
           className={menu === 'sustainability' ? 'active' : ''}>
-        Sustainability
+          Sustainability
         </Link>
         <Link
           to='/origin'
@@ -97,7 +99,7 @@ const Navbar = ({ setShowLogin, showLogin }) => {
             setIsMobileMenuOpen(false);
           }}
           className={menu === 'origin' ? 'active' : ''}>
-         Origin
+          Origin
         </Link>
         {/* <Link
           to='/blog'
@@ -131,6 +133,13 @@ const Navbar = ({ setShowLogin, showLogin }) => {
           </Link>
           <div className={getTotalCartAmount() === 0 ? '' : 'dot'}></div>
         </div>
+        <img
+          src={assets.heart_icon}
+          alt='Wishlist'
+          className='navbar-wishlist-icon'
+          onClick={() => navigate('/wishlist')}
+          style={{ cursor: 'pointer' }}
+        />
         {!token ? (
           <button onClick={() => setShowLogin(true)}>Login</button>
         ) : (

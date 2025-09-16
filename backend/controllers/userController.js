@@ -13,8 +13,8 @@ const loginUser = async (req, res) => {
     const user = await userModel.findOne({
       $or: [
         { email: email },
-        { mobile: email } // Using email field to check mobile also
-      ]
+        { mobile: email }, // Using email field to check mobile also
+      ],
     });
 
     if (!user) {
@@ -30,14 +30,14 @@ const loginUser = async (req, res) => {
     }
 
     const token = createToken(user._id);
-    res.json({ 
-      success: true, 
-      token, 
+    res.json({
+      success: true,
+      token,
       data: {
         name: user.name,
         email: user.email,
-        mobile: user.mobile
-      } 
+        mobile: user.mobile,
+      },
     });
   } catch (error) {
     console.log(error);
@@ -50,16 +50,13 @@ const createToken = (id) => {
 };
 
 const registerUser = async (req, res) => {
-  const { name, email, mobile, password } = req.body;  // Add mobile to destructuring
+  const { name, email, mobile, password } = req.body; // Add mobile to destructuring
   try {
     // Check whether the user exists or not
-    const exist = await userModel.findOne({ 
-      $or: [
-        { email },
-        { mobile }
-      ] 
+    const exist = await userModel.findOne({
+      $or: [{ email }, { mobile }],
     });
-    
+
     if (exist) {
       return res.json({ success: false, message: 'User already exists' });
     }
@@ -84,10 +81,10 @@ const registerUser = async (req, res) => {
     const newUser = new userModel({
       name,
       email,
-      mobile,  // Add mobile field
+      mobile, // Add mobile field
       password: hashedPassword,
     });
-    
+
     const user = await newUser.save();
     const token = createToken(user._id);
     res.json({ success: true, token });
@@ -99,7 +96,14 @@ const registerUser = async (req, res) => {
 
 const checkAuthentication = async (req, res) => {
   try {
-    const user = req.user; // This comes from your auth middleware
+    // Debug: Check if req.user is set by auth middleware
+    if (!req.user) {
+      return res.status(401).json({
+        success: false,
+        message: 'Authentication required',
+      });
+    }
+    const user = req.user;
     return res.status(200).json({
       success: true,
       data: user,
@@ -112,7 +116,6 @@ const checkAuthentication = async (req, res) => {
   }
 };
 
-
 const forgotPassword = async (req, res) => {
   const { email } = req.body;
   try {
@@ -122,15 +125,17 @@ const forgotPassword = async (req, res) => {
       return res.json({ success: false, message: 'User does not exist' });
     }
 
-    const resetToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const resetToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: '1h',
+    });
 
     // Updated Gmail configuration
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
         user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS // This should be your App Password
-      }
+        pass: process.env.EMAIL_PASS, // This should be your App Password
+      },
     });
 
     const mailOptions = {
@@ -143,28 +148,33 @@ const forgotPassword = async (req, res) => {
         <a href="${process.env.FRONTEND_URL}/reset-password/${resetToken}">Reset Password</a>
         <p>This link will expire in 1 hour.</p>
         <p>If you didn't request this, please ignore this email.</p>
-      `
+      `,
     };
 
     await transporter.sendMail(mailOptions);
 
-    res.json({ 
-      success: true, 
-      message: 'Password reset link sent to your email' 
+    res.json({
+      success: true,
+      message: 'Password reset link sent to your email',
     });
-
   } catch (error) {
     console.error('Forgot password error:', error);
-    res.json({ 
-      success: false, 
+    res.json({
+      success: false,
       message: 'Error sending reset email',
-      error: error.message 
+      error: error.message,
     });
   }
 };
 
 // Make sure to export the forgotPassword function
-export { loginUser, registerUser, checkAuthentication, forgotPassword, resetPassword };
+export {
+  loginUser,
+  registerUser,
+  checkAuthentication,
+  forgotPassword,
+  resetPassword,
+};
 
 const resetPassword = async (req, res) => {
   const { token, newPassword } = req.body;
@@ -186,16 +196,43 @@ const resetPassword = async (req, res) => {
     user.password = hashedPassword;
     await user.save();
 
-    res.json({ 
-      success: true, 
-      message: 'Password reset successful' 
+    res.json({
+      success: true,
+      message: 'Password reset successful',
     });
-
   } catch (error) {
     console.error('Reset password error:', error);
-    res.json({ 
-      success: false, 
-      message: 'Error resetting password' 
+    res.json({
+      success: false,
+      message: 'Error resetting password',
     });
   }
+};
+
+// Get logged-in user's data (including cartData)
+const getMe = async (req, res) => {
+  try {
+    const user = await userModel.findById(req.user._id);
+    if (!user) {
+      return res
+        .status(404)
+        .json({ success: false, message: 'User not found' });
+    }
+    res.json({
+      success: true,
+      data: {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        mobile: user.mobile,
+        cartData: user.cartData || {},
+      },
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'Could not fetch user' });
+  }
+};
+
+export {
+  getMe, // <-- export getMe
 };

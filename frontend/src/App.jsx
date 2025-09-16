@@ -23,6 +23,7 @@ import Origin from './pages/Origin/Origin';
 import Menu from './pages/Menu/Menu';
 import Sustainability from './pages/Sustainability/Sustainability';
 import ProductDetails from './pages/ProductDetails/ProductDetails';
+import Wishlist from './pages/Wishlist/Wishlist';
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -80,6 +81,7 @@ const App = () => {
           <Route path='/alkanity' element={<Alkanity />} />
           <Route path='/origin' element={<Origin />} />
           <Route path='/product/:id' element={<ProductDetails />} />
+          <Route path='/wishlist' element={<Wishlist />} />
         </Routes>
       </div>
       <Footer />
