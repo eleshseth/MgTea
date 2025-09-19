@@ -2,10 +2,9 @@ import basket_icon from './basket_icon.png';
 
 import header_img from './header_img.png';
 import search_icon from './search_icon.png';
-import menu_1 from './menu_1.png';
-import menu_2 from './menu_2.png';
+
 import drop from './drop.mp4';
-import menu_8 from './menu_8.png';
+
 
 import food_1 from './food_1.png';
 import food_2 from './food_2.png';
@@ -73,7 +72,6 @@ import location from './location.png';
 import blog1 from './blog1.jpg'; // Fixed import name
 import menu from './menu.png';
 import blog3 from './blog3.jpg';
-import kurkure from './kurkure.webp';
 
 import Recycled from './Recycle.jpg';
 import Bottlebenefit from './Bottlebenefit.jpg';
@@ -88,7 +86,9 @@ import immunity from './immunity.png';
 import age from './age.png';
 import layer from './layer.jpg';
 import origin from './origin.jpg';
-import origin2 from './origin2.jpg';
+import plant from './plant.jpg';
+import ecosystem from './ecosystem.jpg';
+import element from './element.png';
 import sustain from './sustain.jpg';
 import logofinal from './logofinal.png';
 import impact from './impact.png';
@@ -156,7 +156,7 @@ export const assets = {
   bones,
   layer,
   origin,
-  origin2,
+  
   sustain,
   logofinal,
   impact,
@@ -176,6 +176,9 @@ export const assets = {
   teabags,
   ben,
   heart_icon,
+  plant ,ecosystem,
+  element,
+  
 };
 
 export const menu_list = [

@@ -7,7 +7,6 @@ const Wishlist = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  // Refetch wishlist when page loads or after add/remove
   const fetchWishlist = async () => {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -22,14 +21,13 @@ const Wishlist = () => {
     });
     const data = await res.json();
     if (data.success && data.wishlist && Array.isArray(data.wishlist.items)) {
-      // Use populated foodId object
       const wishedFood = data.wishlist.items
         .map((item) => {
           if (
             item.foodId &&
             typeof item.foodId === 'object' &&
             item.foodId._id &&
-            item.foodId.image // ensure populated
+            item.foodId.image
           ) {
             return item.foodId;
           }
@@ -46,6 +44,20 @@ const Wishlist = () => {
   useEffect(() => {
     fetchWishlist();
   }, []);
+
+  const handleRemove = async (foodId) => {
+    const token = localStorage.getItem('token');
+    if (!token) return;
+    await fetch('http://localhost:8009/api/wishlist/remove', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: token.startsWith('Bearer ') ? token : `Bearer ${token}`,
+      },
+      body: JSON.stringify({ foodId }),
+    });
+    fetchWishlist();
+  };
 
   return (
     <div className='wishlist-page'>
@@ -75,6 +87,21 @@ const Wishlist = () => {
                   className='wishlist-view-btn'
                   onClick={() => navigate(`/product/${foodObj._id}`)}>
                   View
+                </button>
+                <button
+                  className='wishlist-remove-btn'
+                  onClick={() => handleRemove(foodObj._id)}
+                  style={{
+                    background: '#e23926',
+                    color: '#fff',
+                    border: 'none',
+                    borderRadius: '18px',
+                    padding: '6px 22px',
+                    fontSize: '1rem',
+                    cursor: 'pointer',
+                    marginTop: '10px',
+                  }}>
+                  Remove 
                 </button>
               </div>
             </div>
