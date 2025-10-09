@@ -1,0 +1,245 @@
+.food-item {
+  width: 100%;
+  max-width: 100%;
+  margin: auto;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+  animation: fadeIn 1s;
+  overflow: hidden;
+}
+.food-item-image {
+  width: 100%;
+  border-radius: 15px 15px 0px 0px;
+  transition: transform 0.3s ease;
+}
+
+.food-item-image:hover {
+  transform: scale(1.05);
+}
+
+.food-item-info {
+  padding: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.food-item-info:hover {
+  background-color: #f8f9fa;
+}
+.food-item-info p {
+  padding-bottom: 10px;
+  outline-color: white;
+  font-weight: 800;
+}
+.food-item-name-rating {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+  position: relative;
+}
+
+.discount-badge {
+  background: #ff4757;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  position: absolute;
+  top: -10px;
+  right: 0;
+  transform: scale(0.9);
+  transform-origin: top right;
+}
+
+@media (max-width: 768px) {
+  .discount-badge {
+    font-size: 12px;
+    padding: 3px 6px;
+    top: -8px;
+  }
+
+  .food-item-price {
+    font-size: 18px;
+    gap: 6px;
+  }
+
+  .original-price {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .discount-badge {
+    font-size: 10px;
+    padding: 1px 4px;
+    top: -4px;
+    right: 0;
+    transform: scale(0.7);
+  }
+
+  .food-item-price {
+    font-size: 14px;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .original-price {
+    font-size: 12px;
+    margin-left: 2px;
+  }
+}
+.food-item-name-rating p {
+  font-size: 20px;
+  font-weight: 500;
+}
+.food-item-name-rating img {
+  width: 70px;
+}
+.food-item-desc {
+  font-size: 12px;
+  color: #000000;
+}
+.food-item-price {
+  font-size: 22px;
+  font-weight: 500;
+  color: red;
+  margin: 10px 0px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.original-price {
+  font-size: 16px;
+  color: #666;
+  text-decoration: line-through;
+  font-weight: normal;
+}
+.food-item-img-container {
+  position: relative;
+}
+.food-item-img-container .add {
+  width: 35px;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.food-item-counter {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px;
+  background-color: rgba(65, 199, 24, 0.679);
+  border-radius: 30px;
+}
+.food-item-counter img {
+  width: 30px;
+}
+.unit-text {
+  font-size: 0.8em;
+  color: #666;
+  margin-left: 2px;
+}
+
+.main-container {
+  background-color: rgba(241, 241, 241, 0.334);
+  padding: 10px;
+  border-radius: 20px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.main-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.food-wishlist-icon {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  z-index: 10;
+  cursor: pointer;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(65, 194, 26, 0.1);
+  padding: 4px;
+  display: block;
+  transition: filter 0.2s, transform 0.15s;
+  filter: grayscale(1) opacity(0.85);
+}
+.food-wishlist-icon.wished {
+  filter: drop-shadow(0 0 8px #41c21a) brightness(1.2);
+  transform: scale(1.18);
+  background: #eaffea;
+}
+
+@media (max-width: 768px) {
+  .food-item-name-rating p {
+    font-size: 14px;
+  }
+
+  .food-item-desc {
+    font-size: 10px;
+  }
+
+  .food-item-price {
+    font-size: 16px;
+  }
+
+  .food-item-name-rating img {
+    width: 45px;
+  }
+
+  .food-item-counter img {
+    width: 25px;
+  }
+
+  .food-item-img-container .add {
+    width: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .food-item-name-rating p {
+    font-size: 12px;
+  }
+
+  .food-item-desc {
+    font-size: 9px;
+  }
+
+  .food-item-price {
+    font-size: 14px;
+  }
+
+  .food-item-name-rating img {
+    width: 35px;
+  }
+
+  .food-item-counter img {
+    width: 20px;
+  }
+
+  .food-item-img-container .add {
+    width: 25px;
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .food-item-counter {
+    padding: 4px;
+    gap: 8px;
+    bottom: 10px;
+    right: 10px;
+  }
+}

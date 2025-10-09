@@ -1,0 +1,10 @@
+.recycle-container {
+  background-image: url('../../assets/Recycle.jpg');
+
+  height: 43vw;
+  width: 100vw;
+  margin-right: 100px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}

@@ -1,0 +1,146 @@
+.origin-container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.origin-image {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+/* Add blur effect at the lower edge of the origin image */
+.origin-image::after {
+  content: "";
+  box-shadow: inset 0px 10px 8px -8px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.18) 40%,
+    rgba(0, 0, 0, 0.38) 70%,
+    rgba(0, 0, 0, 1.65) 100%
+  );
+  filter: blur(8px);
+}
+
+.desktop-origin {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+.mobile-origin {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+
+/* Media Queries for Tablet */
+@media (max-width: 768px) {
+  .origin-image {
+    height: 70vh;
+  }
+
+  .origin-image1 {
+    width: 100%;
+    height: auto;
+  }
+
+  .origin-image1 img {
+    width: 100%;
+    height: auto;
+    padding: 15px;
+  }
+}
+
+/* Media Queries for Mobile */
+@media (max-width: 480px) {
+  .origin-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .origin-image {
+    width: 100%;
+    height: 60vh;
+  }
+  .origin-image1 {
+    width: 100%;
+    position: relative;
+  }
+
+  .origin-image1 img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    padding: 10px;
+  }
+
+  .origin-image img {
+    width: 100%;
+
+    padding: 10px;
+  }
+
+  .desktop-origin {
+    display: none;
+  }
+
+  .mobile-origin {
+    height: 100%;
+    width: 100%;
+    display: block;
+  }
+}
+
+.origin-footer-bg-container {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.origin-footer-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+@media (max-width: 600px) {
+  .origin-footer-bg-container {
+    height: 180px;
+  }
+  .origin-footer-content h2 {
+    font-size: 1.1rem;
+    padding-top: 18px;
+  }
+  .origin-footer-content p {
+    font-size: 0.95rem;
+    padding: 0 8px;
+  }
+}
