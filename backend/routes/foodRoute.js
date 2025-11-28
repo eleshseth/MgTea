@@ -51,24 +51,24 @@ const handleMulterError = (err, req, res, next) => {
     if (err.code === 'LIMIT_FILE_SIZE') {
       return res.status(400).json({
         success: false,
-        message: 'File size too large. Maximum size allowed is 10MB per file.'
+        message: 'File size too large. Maximum size allowed is 10MB per file.',
       });
     }
     if (err.code === 'LIMIT_FILE_COUNT') {
       return res.status(400).json({
         success: false,
-        message: 'Too many files. Maximum 10 images allowed.'
+        message: 'Too many files. Maximum 10 images allowed.',
       });
     }
     if (err.code === 'LIMIT_FIELD_VALUE') {
       return res.status(400).json({
         success: false,
-        message: 'Field value too large.'
+        message: 'Field value too large.',
       });
     }
     return res.status(400).json({
       success: false,
-      message: `Upload error: ${err.message}`
+      message: `Upload error: ${err.message}`,
     });
   }
   next(err);
