@@ -205,8 +205,8 @@
   .explore-menu-list {
     flex-wrap: wrap;
     gap: 6px;
-    justify-content: flex-start;
-    padding: 2vw 7vw;
+ 
+ 
     margin: 0;
     overflow-x: auto;
     height: 90px;

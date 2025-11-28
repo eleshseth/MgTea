@@ -12,8 +12,8 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 
 function App() {
   const location = useLocation();
-  // const url = 'https://api.tlofoodchain.com';
-  const url = 'http://localhost:8009';
+  const url = 'http://localhost:8010';
+  // const url = 'https://api.mgindiamart.com';
 
   const isLoginPage = location.pathname === '/';
 

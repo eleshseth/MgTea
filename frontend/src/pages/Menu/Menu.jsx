@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Menu.css';
 import FoodDisplay from '../../components/FoodDisplay/FoodDisplay';
 
-const categories = ['All', 'Momo', 'Drinks', 'Meals', 'Desserts']; // Example categories
+const categories = ['All',"Green Tea", 'Teabags', 'Resin', 'Dryfruits', 'Grocery']; // Example categories
 const sortOptions = [
   { label: 'None', value: '' },
   { label: 'Price: Low to High', value: 'asc' },

@@ -9,9 +9,10 @@ export const StoreContext = createContext(null);
 const StoreContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
   // Use local development server
-  const url = 'http://localhost:8009';
+  //const url = 'https://api.mgindiamart.com';
   //https://api.driinkoxygen.com
   //'http://localhost:8009';
+  const url = 'http://localhost:8010';
 
   const [token, setToken] = useState('');
   const [food_list, setFoodList] = useState([]);

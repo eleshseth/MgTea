@@ -20,7 +20,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        'http://localhost:8009/api/admin/login',
+        'https://api.mgindiamart.com/api/admin/login',
         data
       );
 
