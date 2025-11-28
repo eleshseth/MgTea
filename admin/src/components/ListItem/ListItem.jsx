@@ -32,8 +32,8 @@ const Fooditem = ({ id, name, price, image, stock }) => {
     setLoading(true);
     try {
       const url = isWished
-        ? 'http://localhost:8009/api/wishlist/remove'
-        : 'http://localhost:8009/api/wishlist/add';
+        ? 'https://api.mgindiamart.com/api/wishlist/remove'
+        : 'https://api.mgindiamart.com/api/wishlist/add';
       const response = await fetch(url, {
         method: 'POST',
         headers: {
@@ -47,7 +47,7 @@ const Fooditem = ({ id, name, price, image, stock }) => {
       if (!response.ok) {
         // If connection refused or server down, show a clear message
         alert(
-          'Could not connect to backend. Please make sure your backend server is running on http://localhost:8009'
+          'Could not connect to backend. Please make sure your backend server is running on http://localhost:8010'
         );
         setLoading(false);
         return;
@@ -68,7 +68,7 @@ const Fooditem = ({ id, name, price, image, stock }) => {
       }
     } catch (err) {
       alert(
-        'Could not connect to backend. Please make sure your backend server is running on http://localhost:8009',
+        'Could not connect to backend. Please make sure your backend server is running on http://localhost:8010',
         err
       );
     }

@@ -12,7 +12,7 @@ import wishlistRoutes from './routes/wishlistRoutes.js';
 
 //app config
 const app = express();
-const PORT = 8010;
+const PORT = 8009;
 
 //middlewares
 app.use(express.json({ limit: '50mb' }));
