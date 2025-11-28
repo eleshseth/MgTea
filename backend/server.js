@@ -20,20 +20,7 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 // Configure CORS for both development and production
 app.use(
-  cors({
-    origin: [
-      'http://localhost:5173',
-      'http://localhost:5174',
-      'http://localhost:3000',
-      'http://localhost:5176',
-      'https://admin.mgindiamart.com',
-      'https://mgindiamart.com',
-      'https://www.mgindiamart.com',
-    ],
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'token'],
-  })
+  cors()
 );
 //db connection
 connectDB();
