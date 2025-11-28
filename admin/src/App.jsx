@@ -12,8 +12,8 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 
 function App() {
   const location = useLocation();
- const url = 'http://localhost:8010';
-   //const url = 'https://api.mgindiamart.com';
+  const url = 'http://localhost:8010';
+  //const url = 'https://api.mgindiamart.com';
 
   const isLoginPage = location.pathname === '/';
 
@@ -30,7 +30,7 @@ function App() {
         <div className='app-content'>
           {!isLoginPage && <Sidebar />}
           <Routes>
-            <Route path='/' element={<Login />} />
+            <Route path='/' element={<Login url={url} />} />
             <Route
               path='/add'
               element={

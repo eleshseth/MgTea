@@ -5,7 +5,7 @@ import axios from 'axios';
 import './Login.css';
 import { toast } from 'react-toastify';
 
-const Login = () => {
+const Login = ({ url }) => {
   const navigate = useNavigate();
   const [data, setData] = useState({
     email: '',
@@ -19,10 +19,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        'https://api.mgindiamart.com/api/admin/login',
-        data
-      );
+      const response = await axios.post(`${url}/api/admin/login`, data);
 
       if (response.data.success) {
         localStorage.setItem('adminToken', response.data.token);
@@ -33,7 +30,7 @@ const Login = () => {
         toast.error(response.data.message);
       }
     } catch (error) {
-      toast.error('Something went wrong');
+      toast.error('Something went wrong', error);
     }
   };
 
