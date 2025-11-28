@@ -40,10 +40,41 @@ const upload = multer({
   storage: storage,
   fileFilter: fileFilter,
   limits: {
-    fileSize: 5 * 1024 * 1024, // 5MB file size limit
+    fileSize: 10 * 1024 * 1024, // 10MB file size limit
+    fieldSize: 25 * 1024 * 1024, // 25MB field size limit
   },
 });
-foodRouter.post('/add', upload.array('images', 7), addFood); // Changed to handle multiple images
+
+// Error handling middleware for multer
+const handleMulterError = (err, req, res, next) => {
+  if (err instanceof multer.MulterError) {
+    if (err.code === 'LIMIT_FILE_SIZE') {
+      return res.status(400).json({
+        success: false,
+        message: 'File size too large. Maximum size allowed is 10MB per file.'
+      });
+    }
+    if (err.code === 'LIMIT_FILE_COUNT') {
+      return res.status(400).json({
+        success: false,
+        message: 'Too many files. Maximum 10 images allowed.'
+      });
+    }
+    if (err.code === 'LIMIT_FIELD_VALUE') {
+      return res.status(400).json({
+        success: false,
+        message: 'Field value too large.'
+      });
+    }
+    return res.status(400).json({
+      success: false,
+      message: `Upload error: ${err.message}`
+    });
+  }
+  next(err);
+};
+
+foodRouter.post('/add', upload.array('images', 10), handleMulterError, addFood); // Increased to handle up to 10 images
 foodRouter.get('/list', listFood);
 foodRouter.post('/remove', removeFood);
 foodRouter.post('/update', updateFood);

@@ -15,14 +15,23 @@ const app = express();
 const PORT = 8010;
 
 //middlewares
-app.use(express.json());
-app.use(cors());
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
-// //{
-//     origin: ['http://localhost:5173', 'http://localhost:3000'],
-//     credentials: true,
-//   } pass this in cors
+
+// Configure CORS for both development and production
+app.use(cors({
+    origin: [
+        'http://localhost:5173', 
+        'http://localhost:3000',
+        'http://localhost:5176',
+        'https://admin.mgindiamart.com',
+        'https://mgindiamart.com',
+        'https://www.mgindiamart.com'
+    ],
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'token']
+}));
 //db connection
 connectDB();
 
@@ -37,6 +46,22 @@ app.use('/api/contact', contactRouter);
 app.use('/api/wishlist', wishlistRoutes);
 app.get('/', (req, res) => {
   res.send('API working ');
+});
+
+// Global error handler
+app.use((err, req, res, next) => {
+  console.error('Global error handler:', err);
+  if (err.type === 'entity.too.large') {
+    return res.status(413).json({
+      success: false,
+      message: 'Request entity too large. Please reduce file size.'
+    });
+  }
+  res.status(500).json({
+    success: false,
+    message: 'Internal server error',
+    error: process.env.NODE_ENV === 'development' ? err.message : undefined
+  });
 });
 
 app.listen(PORT, () => {
